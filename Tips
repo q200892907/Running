@@ -1,0 +1,2 @@
+1、./gradlew install  生成
+2、./gradlew bintrayUpload 上传

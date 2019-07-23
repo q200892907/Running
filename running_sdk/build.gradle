@@ -1,0 +1,177 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName version
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // 开启lambda表达式
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    //开启DataBinding
+    dataBinding {
+        enabled = true
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            assets.srcDirs = ['src/main/assets']
+            jniLibs.srcDirs = ['libs']
+        }
+        // Move the tests to tests/java, tests/res, etc...
+        androidTest.setRoot('tests')
+
+        // Move the build types to build-types/<type>
+        // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
+        // This moves them out of them default location under src/<type>/... which would
+        // conflict with src/ being used by the main source set.
+        // Adding new build types or product flavors should be accompanied
+        // by a similar customization.
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+
+    // 基础库
+    api rootProject.ext.dependencies["support-v4"]
+    api rootProject.ext.dependencies["appcompat-v7"]
+    api rootProject.ext.dependencies["cardview-v7"]
+    api rootProject.ext.dependencies["recyclerview-v7"]
+    api rootProject.ext.dependencies["design"]
+    api rootProject.ext.dependencies["support-annotations"]
+
+    // ConstraintLayout 约束布局
+    api rootProject.ext.dependencies["constraint-layout"]
+}
+
+/** 以下开始是将Android Library上传到jcenter的相关配置**/
+
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+//项目主页
+def siteUrl = 'https://github.com/q200892907/Running'    // project homepage
+//项目的版本控制地址
+def gitUrl = 'https://github.com/q200892907/Running.git' // project git
+//项目描述
+def libDesc = '跑步记录SDK'
+
+//发布到组织名称名字，必须填写
+group = "com.jvtd"
+//发布到JCenter上的项目名字，必须填写
+def libName = "RunningSDK"
+// 版本号，下次更新是只需要更改版本号即可
+version = rootProject.ext.android["runningVersion"]
+/**  上面配置后上传至jcenter后的编译路径是这样的： implementation 'cn.jvtd:package:0.0.1'  **/
+
+//生成源文件
+task sourcesJar(type: Jar) {
+    from fileTree(dir: 'src/main',includes: ['assets/**'])
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+//生成文档
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    options.encoding "UTF-8"
+    options.charSet 'UTF-8'
+    options.author true
+    options.version true
+    options.links ""
+    failOnError false
+}
+
+//文档打包成jar
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+//拷贝javadoc文件
+task copyDoc(type: Copy) {
+    from "${buildDir}/docs/"
+    into "docs"
+}
+
+//上传到jcenter所需要的源码文件
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+// 配置maven库，生成POM.xml文件
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                name libDesc
+                url siteUrl
+                licenses {
+                    license {
+                        name libDesc
+                        url siteUrl
+                    }
+                }
+                developers {
+                    developer {
+                        id 'q200892907'
+                        name 'chenlei'
+                        email '200892907@qq.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+//上传到jcenter
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty("bintray.user")    //读取 local.properties 文件里面的 bintray.user
+    key = properties.getProperty("bintray.apikey")   //读取 local.properties 文件里面的 bintray.apikey
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = libName    //发布到JCenter上的项目名字，必须填写
+        desc = libDesc    //项目描述
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
+}
