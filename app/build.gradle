@@ -9,11 +9,51 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            //设置支持的SO库架构
+            abiFilters 'armeabi', 'x86', 'armeabi-v7a'//, 'x86_64', 'arm64-v8a'
+        }
+
+        multiDexEnabled true
     }
+
+
+    signingConfigs {
+        release {
+            storeFile file("running.jks")
+            storePassword "jutongda178"
+            keyAlias "running"
+            keyPassword "jutongda178"
+        }
+//        MD5: 00:EF:77:A5:74:97:96:56:40:A1:96:D4:C0:42:28:C7
+//        SHA1: D3:BB:58:05:2F:5F:83:12:34:25:15:8E:D9:41:F0:87:52:28:5D:E6
+//        SHA256: EE:C2:83:C1:47:08:90:A8:B4:80:4E:80:C3:7E:87:32:C2:38:F3:E9:C2:9F:4E:CE:31:5F:A8:21:AC:5C:DD:42
+    }
+
+    // 开启lambda表达式
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    //开启DataBinding
+    dataBinding {
+        enabled = true
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.release
         }
     }
 }
@@ -26,4 +66,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    implementation project(":running_sdk")
 }

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">running_sdk</string>
+    <string name="use_location_service">使用定位服务中…</string>
+    <string name="title_activity_jvtd_main">JvtdMainActivity</string>
 </resources>
