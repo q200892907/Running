@@ -1,6 +1,7 @@
 package com.jvtd.running_sdk.ui;
 
 import android.content.IntentFilter;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,10 +11,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.amap.api.maps.AMap;
 import com.jvtd.running_sdk.R;
 import com.jvtd.running_sdk.bean.JvtdLineBean;
 import com.jvtd.running_sdk.constants.RunningSdk;
 import com.jvtd.running_sdk.eventBus.EventCenter;
+import com.jvtd.running_sdk.location.JvtdMapView;
 import com.jvtd.running_sdk.location.manager.JvtdLocationStatusManager;
 import com.jvtd.running_sdk.location.service.JvtdLocationService;
 import com.jvtd.running_sdk.receiver.JvtdLocationChangeReceiver;
@@ -24,9 +27,12 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.net.Socket;
 
-public class JvtdMainActivity extends AppCompatActivity {
+public class JvtdMainActivity extends AppCompatActivity implements AMap.OnMyLocationChangeListener {
+    private static final String TAG = "测试地图页面";
+
     private TextView mTextView;
     private JvtdLocationChangeReceiver receiver;
+    private JvtdMapView mMapView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,9 @@ public class JvtdMainActivity extends AppCompatActivity {
         EventBus.getDefault().register(this);
         mTextView = findViewById(R.id.info_view);
 
+        mMapView = findViewById(R.id.jvtd_map_view);
+        mMapView.onCreate(savedInstanceState);
+        mMapView.setOnMyLocationChangeListener(this);
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(RunningSdk.LOCATION_IN_BACKGROUND);
         receiver = new JvtdLocationChangeReceiver();
@@ -47,6 +56,24 @@ public class JvtdMainActivity extends AppCompatActivity {
             JvtdLocationStatusManager.getInstance().resetToInit(getApplicationContext());
             JvtdLocationStatusManager.getInstance().startLocationService(getApplicationContext());
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mMapView.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mMapView.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mMapView.onResume();
     }
 
     /**
@@ -61,10 +88,10 @@ public class JvtdMainActivity extends AppCompatActivity {
         switch (eventCenter.getEventCode()) {
             case RunningSdk.EVENT_CODE_LOCATION:
                 infoViewString = JvtdLineBean.getInstance().getLocations().get(JvtdLineBean.getInstance().getLocations().size()-1).toString();
-                Log.d("定位信息", infoViewString);
+                Log.d(TAG, infoViewString);
                 break;
             case RunningSdk.EVENT_CODE_GPS_STATUS:
-                Log.d("定位信息","GPS精度为-"+eventCenter.getData());
+                Log.d(TAG,"GPS精度为-"+eventCenter.getData());
                 infoViewString = "GPS精度为-"+eventCenter.getData();
                 break;
             default:
@@ -80,6 +107,12 @@ public class JvtdMainActivity extends AppCompatActivity {
         JvtdLineBean.getInstance().reset();
         JvtdLocationStatusManager.getInstance().stopLocationService(getApplicationContext());
         unregisterReceiver(receiver);
+        mMapView.onDestroy();
         super.onDestroy();
+    }
+
+    @Override
+    public void onMyLocationChange(Location location) {
+        Log.d(TAG,location.toString());
     }
 }

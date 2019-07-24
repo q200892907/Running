@@ -34,13 +34,6 @@ import java.util.Locale;
  * 时间:2019-07-23 14:23
  */
 public class JvtdLocationUtils {
-    public final static int MSG_LOCATION_START = 0;//开始定位
-    public final static int MSG_LOCATION_FINISH = 1;//定位完成
-    public final static int MSG_LOCATION_STOP = 2;//停止定位
-
-    public final static String KEY_URL = "URL";
-    public final static String URL_H5LOCATION = "file:///android_asset/location.html";
-
     /**
      * 根据定位结果返回定位信息的字符串
      *
@@ -223,7 +216,23 @@ public class JvtdLocationUtils {
         return new IntentFilter(CLOSE_BRODECAST_INTENT_ACTION_NAME);
     }
 
-    //计算
+    public static class CloseServiceReceiver extends BroadcastReceiver {
+        Service mService;
+
+        public CloseServiceReceiver(Service service) {
+            this.mService = service;
+        }
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (mService == null) {
+                return;
+            }
+            mService.onDestroy();
+        }
+    }
+
+    //计算两点距离
     public static double calculateMileage(AMapLocation start, AMapLocation end) {
         return calculateLineDistance(new LatLng(start.getLatitude(), start.getLongitude()), new
                 LatLng(end.getLatitude(), end.getLongitude()));
@@ -243,21 +252,5 @@ public class JvtdLocationUtils {
         if (d.isInfinite() || d.isNaN())
             return 0.0;
         return Math.abs(d * 1000);
-    }
-
-    public static class CloseServiceReceiver extends BroadcastReceiver {
-        Service mService;
-
-        public CloseServiceReceiver(Service service) {
-            this.mService = service;
-        }
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (mService == null) {
-                return;
-            }
-            mService.onDestroy();
-        }
     }
 }

@@ -16,8 +16,9 @@
             android:value="edf455d9304b637212223e0b3ca6689c"/>
 
         <service android:name="com.amap.api.location.APSService"/>
+
         <service android:name="com.jvtd.running_sdk.location.service.JvtdLocationService"/>
-        <service android:name="com.jvtd.running_sdk.location.service.JvtdLocationHelperService"/>
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

@@ -1,3 +1,10 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="jvtd_dp_16">16dp</dimen>
+    <dimen name="jvtd_dp_24">24dp</dimen>
+    <dimen name="jvtd_sp_8">8sp</dimen>
+    <dimen name="jvtd_dp_1">1dp</dimen>
+    <dimen name="jvtd_dp_4">4dp</dimen>
+    <dimen name="jvtd_dp_0">0dp</dimen>
+    <dimen name="jvtd_dp_18">18dp</dimen>
 </resources>
