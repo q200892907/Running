@@ -6,12 +6,17 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.jvtd.running_sdk.R;
+import com.jvtd.running_sdk.stepCount.StepCount;
+import com.jvtd.running_sdk.stepCount.StepDetector;
+import com.jvtd.running_sdk.stepCount.StepValuePassListener;
 import com.jvtd.running_sdk.utils.JvtdLocationUtils;
 
 import java.util.concurrent.TimeUnit;
@@ -48,8 +53,13 @@ public class JvtdLocation implements AMapLocationListener
 
   private int mErrorNum = 0;//定位偏移数
 
-  // TODO: 2019-07-23 需计步器
+  private boolean isStepCount = false;//是否开启计步功能
   private int mStepNumber = 0;//当前步数
+
+  private Sensor mSensor;
+  private SensorManager mSensorManager;
+  private StepCount mStepCount;
+  private StepDetector mStepDetector;
 
   public interface JvtdLocationListener
   {
@@ -62,7 +72,7 @@ public class JvtdLocation implements AMapLocationListener
   }
 
   public JvtdLocation(Context context, boolean isNeedAddress, boolean isSensor, long interval,
-                      boolean isOnlyGPS, boolean isNeedInfo)
+                      boolean isOnlyGPS, boolean isNeedInfo,boolean isStepCount)
   {
     super();
     this.mContext = context;
@@ -71,17 +81,21 @@ public class JvtdLocation implements AMapLocationListener
     this.interval = interval;
     this.isOnlyGPS = isOnlyGPS;
     this.isNeedInfo = isNeedInfo;
+    this.isStepCount = isStepCount;
+    if (isStepCount){
+      initStepCount();
+    }
     initLocation();
   }
 
   public JvtdLocation(Context context, boolean isNeedAddress, boolean isSensor)
   {
-    this(context, isNeedAddress, isSensor, 2000, false,false);
+    this(context, isNeedAddress, isSensor, 2000, false,false,false);
   }
 
   public JvtdLocation(Context context)
   {
-    this(context, false, true, 2000, false, true);
+    this(context, false, true, 2000, false, true,true);
   }
 
   /**
@@ -170,6 +184,17 @@ public class JvtdLocation implements AMapLocationListener
       //设置场景模式后最好调用一次stop，再调用start以保证场景模式生效
       mLocationClient.stopLocation();
     }
+  }
+
+  //初始化步数记录
+  private void initStepCount() {
+    mStepDetector = new StepDetector();
+    mSensorManager = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
+    mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+    mSensorManager.registerListener(mStepDetector,mSensor,SensorManager.SENSOR_DELAY_UI);
+    mStepCount = new StepCount();
+    mStepCount.initListener(steps -> mStepNumber = steps);
+    mStepDetector.initListener(mStepCount);
   }
 
   @SuppressLint("NewApi")
@@ -275,5 +300,8 @@ public class JvtdLocation implements AMapLocationListener
   {
     stopLocation();
     mLocationClient.onDestroy();
+    if (isStepCount && mSensorManager != null){
+      mSensorManager.unregisterListener(this.mStepDetector);
+    }
   }
 }

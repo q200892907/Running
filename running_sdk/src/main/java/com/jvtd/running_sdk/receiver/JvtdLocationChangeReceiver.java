@@ -22,6 +22,7 @@ public class JvtdLocationChangeReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
+        //判断接收数据类型 基于类型进行对应数据处理
         if (RunningSdk.LOCATION_IN_BACKGROUND.equals(action)) {
             int type = intent.getIntExtra(RunningSdk.LOCATION_SEND_TYPE, RunningSdk.LOCATION_SEND_DATA);
             if (type == RunningSdk.LOCATION_SEND_DATA) {

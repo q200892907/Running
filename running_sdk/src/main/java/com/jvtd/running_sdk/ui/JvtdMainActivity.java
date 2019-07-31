@@ -3,10 +3,12 @@ package com.jvtd.running_sdk.ui;
 import android.content.IntentFilter;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.telecom.Call;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -25,6 +27,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.io.IOException;
 import java.net.Socket;
 
 public class JvtdMainActivity extends AppCompatActivity implements AMap.OnMyLocationChangeListener {
@@ -92,8 +95,8 @@ public class JvtdMainActivity extends AppCompatActivity implements AMap.OnMyLoca
                 break;
             case RunningSdk.EVENT_CODE_GPS_STATUS:
                 Log.d(TAG,"GPS精度为-"+eventCenter.getData());
-                infoViewString = "GPS精度为-"+eventCenter.getData();
-                break;
+//                infoViewString = "GPS精度为-"+eventCenter.getData();
+                return;
             default:
                 break;
         }
