@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:gravity="center"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:layout_height="match_parent">
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/jvtd_empty_loading_view"
+        style="@style/SpinKitView.Circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:SpinKit_Color="@color/jvtd_empty_color" />
+    <TextView
+        android:layout_marginTop="8dp"
+        android:id="@+id/jvtd_empty_loading_msg"
+        android:textColor="@color/jvtd_empty_color"
+        android:textSize="@dimen/jvtd_empty_text_size"
+        android:gravity="center"
+        android:text="@string/jvtd_empty_loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

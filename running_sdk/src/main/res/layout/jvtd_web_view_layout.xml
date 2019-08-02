@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/jvtd_web_view_bg_color">
+
+    <TextView
+        android:id="@+id/webview_host"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        android:textAlignment="center"
+        android:textColor="@color/jvtd_web_view_host_text_color"
+        android:textSize="@dimen/jvtd_web_view_host_text_size" />
+
+    <com.jvtd.widget.webView.JvtdJsWebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ProgressBar
+        android:id="@+id/webview_pg"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:progressDrawable="@drawable/jvtd_web_view_progress_bar_drawable"
+        android:visibility="gone" />
+</FrameLayout>

@@ -171,7 +171,7 @@ public class JvtdLocationUtils {
         }
         builder.setSmallIcon(R.drawable.ic_launcher)
                 .setContentTitle(context.getString(R.string.app_name))
-                .setContentText(context.getString(R.string.use_location_service))
+                .setContentText(context.getString(R.string.jvtd_use_location_service))
                 .setWhen(System.currentTimeMillis());
         notification = builder.build();
         return notification;

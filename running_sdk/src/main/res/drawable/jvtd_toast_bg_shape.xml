@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <solid android:color="@color/jvtd_toast_bg_color"/>
+
+    <corners android:radius="@dimen/jvtd_toast_radius"/>
+
+    <padding
+        android:bottom="@dimen/jvtd_toast_padding_size"
+        android:left="@dimen/jvtd_toast_padding_size"
+        android:right="@dimen/jvtd_toast_padding_size"
+        android:top="@dimen/jvtd_toast_padding_size"/>
+</shape>

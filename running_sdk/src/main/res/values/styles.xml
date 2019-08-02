@@ -1,13 +1,68 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light" />
-
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+    <!-- Base application theme. -->
+    <style name="SDK.AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!-- toolbar（actionbar）颜色 -->
+        <item name="colorPrimary">@color/primary_color</item>
+        <!-- 状态栏颜色 -->
+        <item name="colorPrimaryDark">@color/primary_color_dark</item>
+        <!-- 各控制元件(如：check box、switch 或是 radoi) 被勾选 (checked) 或是选定 (selected) 的颜色。 -->
+        <item name="colorAccent">@color/primary_color_accent</item>
+        <!-- 窗口的背景颜色 -->
+        <item name="android:windowBackground">@android:color/white</item>
+        <!-- 设置activity切换动画 -->
+        <item name="android:windowAnimationStyle">@style/ActivityAnimation</item>
+        <!--RecyclerView Divider drawable-->
+        <item name="android:listDivider">@drawable/jvtd_recycler_view_divider_shape</item>
+        <!--程序初始化, 窗口置为透明-->
+        <item name="android:windowNoTitle">true</item>
+        <!--沉浸状态栏-->
+        <!--Android 8.0适配报错：Only fullscreen opaque activities can request orientation解决方案：-->
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <!-- animation 样式 -->
+    <style name="ActivityAnimation" parent="@android:style/Animation">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_right_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_left_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_left_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_right_out</item>
+    </style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <!-- 修改 Toolbar 菜单字体大小 -->
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="actionMenuTextColor">@color/jvtd_tool_bar_menu_text_color</item>
+        <item name="android:textSize">@dimen/jvtd_tool_bar_menu_text_size</item>
+        <item name="overlapAnchor">false</item>
+        <item name="colorControlNormal">#fff</item>
+        <item name="toolbarStyle">@style/NoSpaceActionBarTheme</item>
+    </style>
+    <style name="NoSpaceActionBarTheme" parent="Base.Widget.AppCompat.Toolbar">
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetStartWithNavigation">0dp</item>
+    </style>
+
+    <style name="JvtdBottomDialog" parent="JvtdDialog">
+        <item name="android:windowAnimationStyle">@style/BottomDialog.AnimationStyle</item>
+    </style>
+    <style name="JvtdTopDialog" parent="JvtdDialog">
+        <item name="android:windowAnimationStyle">@style/TopDialog.AnimationStyle</item>
+    </style>
+    <style name="JvtdDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
+    <style name="BottomDialog.AnimationStyle" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/jvtd_dialog_in_from_bottom</item>
+        <item name="android:windowExitAnimation">@anim/jvtd_dialog_out_to_bottom</item>
+    </style>
+    <style name="TopDialog.AnimationStyle" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/jvtd_dialog_in_from_top</item>
+        <item name="android:windowExitAnimation">@anim/jvtd_dialog_out_to_top</item>
+    </style>
+
 </resources>

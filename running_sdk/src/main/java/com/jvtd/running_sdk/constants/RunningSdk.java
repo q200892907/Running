@@ -6,6 +6,10 @@ package com.jvtd.running_sdk.constants;
  * 时间:2019-07-23 14:13
  */
 public class RunningSdk {
+    public static final String HTTP_URL = "http://www.baidu.com";
+
+    public static final String HTTP_API_URL = HTTP_URL+"";
+
     public static final String LOCATION_IN_BACKGROUND = "LOCATION_IN_BACKGROUND";//后台定位
 
     public static final String LOCATION_DATA = "LOCATION_DATA";//定位数据
@@ -19,4 +23,6 @@ public class RunningSdk {
     //EventBus 状态码
     public static final int EVENT_CODE_LOCATION = 0x01;//后台定位
     public static final int EVENT_CODE_GPS_STATUS = 0x02;//GPS状态
+
+    public static final int LOAD_NUM = 10;//一次加载条数
 }

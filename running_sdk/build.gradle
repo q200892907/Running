@@ -89,12 +89,81 @@ dependencies {
     api rootProject.ext.dependencies["multidex"]
 
     // EventBus
-    api rootProject.ext.dependencies["eventbus"]
+    implementation rootProject.ext.dependencies["eventbus"]
 
     // 高德地图
-    api 'com.amap.api:3dmap:6.9.2'
-    api 'com.amap.api:location:4.7.0'
-    api 'com.amap.api:search:6.9.2'
+    implementation 'com.amap.api:3dmap:6.9.2'
+    implementation 'com.amap.api:location:4.7.0'
+    implementation 'com.amap.api:search:6.9.2'
+
+    // Adapter
+    implementation rootProject.ext.dependencies["brvah"]
+
+    //下拉刷新
+    implementation rootProject.ext.dependencies["smartrefreshlayout"]
+    //没有使用特殊Header，可以不加这行
+    implementation rootProject.ext.dependencies["smartrefreshheader"]
+
+    // web js 交互
+    api rootProject.ext.dependencies["jsbridge"]
+
+    //loading动画
+    api rootProject.ext.dependencies["spinkit"]
+
+    //条件选择器
+    api rootProject.ext.dependencies["pickerview"]
+
+    /*retrofit*/
+    api rootProject.ext.dependencies["retrofit"]
+    api rootProject.ext.dependencies["converter-gson"]
+    api rootProject.ext.dependencies["converter-scalars"]
+    api rootProject.ext.dependencies["adapter-rxjava2"]
+    api rootProject.ext.dependencies["logging-interceptor"]
+
+    //fragment
+    api rootProject.ext.dependencies["fragmentation"]
+
+    // 分包
+    api rootProject.ext.dependencies["multidex"]
+
+    //Glide
+    api rootProject.ext.dependencies["glide"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+
+    //图片压缩
+    api rootProject.ext.dependencies["luban"]
+
+    // EventBus
+    api rootProject.ext.dependencies["eventbus"]
+
+    // 浸入式状态栏
+    api rootProject.ext.dependencies["statusbar"]
+
+    //崩溃日志
+    api rootProject.ext.dependencies["logcook"]
+
+    //权限
+    api rootProject.ext.dependencies["permission"]
+
+    //MagicIndicator
+    api rootProject.ext.dependencies["magicindicator"]
+
+    //supertextview
+    api rootProject.ext.dependencies["supertextview"]
+
+    //banner
+    api rootProject.ext.dependencies["banner"]
+
+    //imagepicker
+    api (rootProject.ext.dependencies["imagepicker"]){
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+    }
+//    api rootProject.ext.dependencies["imagepicker"]
+
+    //easypopup
+    api rootProject.ext.dependencies["easypopup"]
 }
 
 /** 以下开始是将Android Library上传到jcenter的相关配置**/

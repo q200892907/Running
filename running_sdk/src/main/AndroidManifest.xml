@@ -25,10 +25,16 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application>
+        <!--华为O版本全面平适配-->
+        <meta-data android:name="android.notch_support" android:value="true"/>
+        <!-- 适配三星18.5:9的屏幕 -->
+        <meta-data android:name="android.max_aspect" android:value="2.1" />
+
         <activity
-            android:name=".ui.JvtdMainActivity"
-            android:label="@string/title_activity_jvtd_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".ui.test.JvtdMainActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout"
+            android:screenOrientation="portrait"
+            android:theme="@style/SDK.AppTheme.Base"/>
     </application>
 
 </manifest>

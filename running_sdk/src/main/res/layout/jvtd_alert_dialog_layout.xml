@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginEnd="44dp"
+    android:layout_marginStart="44dp"
+    android:background="@drawable/jvtd_alert_dialog_shape"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/alert_dialog_title_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:text="@string/jvtd_alert_dialog_title"
+        android:textColor="@color/jvtd_alert_dialog_title_color"
+        android:textSize="@dimen/jvtd_alert_dialog_title_text_size"/>
+
+    <RelativeLayout
+        android:id="@+id/content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp">
+
+        <TextView
+            android:id="@+id/alert_dialog_info_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="32dp"
+            android:gravity="center"
+            android:textColor="@color/jvtd_alert_dialog_msg_color"
+            android:textSize="@dimen/jvtd_alert_dialog_msg_text_size"
+            tools:text="@string/app_name"/>
+
+        <com.jvtd.widget.editText.JvtdClearEditText
+            android:id="@+id/alert_dialog_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/jvtd_alert_dialog_edit_text_shape"
+            android:gravity="center"
+            android:hint="@string/jvtd_alert_dialog_input_info"
+            android:minHeight="40dp"
+            android:padding="8dp"
+            android:textColor="@color/jvtd_alert_dialog_msg_color"
+            android:textColorHint="@color/jvtd_alert_dialog_hint_color"
+            android:textSize="@dimen/jvtd_alert_dialog_msg_text_size"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/jvtd_alert_dialog_line_size"
+        android:layout_marginTop="40dp"
+        android:background="@color/jvtd_alert_dialog_line_color"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/alert_dialog_left_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/jvtd_alert_dialog_left_title"
+            android:textColor="@color/jvtd_alert_dialog_btn_text_color"
+            android:textSize="@dimen/jvtd_alert_dialog_btn_text_size"
+            android:textStyle="bold"/>
+
+        <View
+            android:id="@+id/alert_dialog_btn_divider"
+            android:layout_width="@dimen/jvtd_alert_dialog_line_size"
+            android:layout_height="match_parent"
+            android:background="@color/jvtd_alert_dialog_line_color"/>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/alert_dialog_center_view"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/alert_dialog_center_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/jvtd_alert_dialog_btn_text_color"
+                android:textSize="@dimen/jvtd_alert_dialog_btn_text_size"
+                android:textStyle="bold"/>
+            <View
+                android:layout_alignParentEnd="true"
+                android:id="@+id/alert_dialog_center_btn_divider"
+                android:layout_width="@dimen/jvtd_alert_dialog_line_size"
+                android:layout_height="match_parent"
+                android:background="@color/jvtd_alert_dialog_line_color"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/alert_dialog_right_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/jvtd_alert_dialog_right_title"
+            android:textColor="@color/jvtd_alert_dialog_btn_text_color"
+            android:textSize="@dimen/jvtd_alert_dialog_btn_text_size"
+            android:textStyle="bold"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--空布局配置-->
+    <declare-styleable name="JvtdEmptyView">
+        <attr name="jvtdEmptyLayout"  format="reference"/>
+        <attr name="jvtdErrorLayout"  format="reference"/>
+        <attr name="jvtdLoadingLayout"  format="reference"/>
+    </declare-styleable>
+    <!--viewpager配置-->
+    <declare-styleable name="JvtdViewPager">
+        <attr name="jvtd_is_scroll" format="boolean" />
+        <attr name="jvtd_is_infinite" format="boolean" />
+    </declare-styleable>
+
+    <!--rclayout-->
+    <!-- *公共属性* -->
+    <!--圆形-->
+    <attr name="jvtd_round_as_circle" format="boolean" />
+    <!--全部圆角半径-->
+    <attr name="jvtd_round_corner" format="integer|dimension" />
+    <!--针对各个角的半径-->
+    <attr name="jvtd_round_corner_top_left" format="integer|dimension" />
+    <attr name="jvtd_round_corner_top_right" format="integer|dimension" />
+    <attr name="jvtd_round_corner_bottom_left" format="integer|dimension" />
+    <attr name="jvtd_round_corner_bottom_right" format="integer|dimension" />
+
+    <!--描边颜色／半径-->
+    <attr name="jvtd_stroke_color" format="color|reference" />
+    <attr name="jvtd_stroke_width" format="integer|dimension" />
+
+    <!-- 是否剪裁 JvtdRcLayout 的背景 -->
+    <attr name="jvtd_clip_background" format="boolean" />
+
+    <!--真正用于解析的属性-->
+    <declare-styleable name="JvtdRcAttrs">
+        <attr name="jvtd_round_as_circle" />
+        <attr name="jvtd_round_corner" />
+        <attr name="jvtd_round_corner_top_left" />
+        <attr name="jvtd_round_corner_top_right" />
+        <attr name="jvtd_round_corner_bottom_left" />
+        <attr name="jvtd_round_corner_bottom_right" />
+        <attr name="jvtd_stroke_color" />
+        <attr name="jvtd_stroke_width" />
+        <attr name="jvtd_clip_background" />
+    </declare-styleable>
+
+    <!--假体：用于提示-->
+    <declare-styleable name="JvtdRcRelativeLayout">
+        <attr name="jvtd_round_as_circle" />
+        <attr name="jvtd_round_corner" />
+        <attr name="jvtd_round_corner_top_left" />
+        <attr name="jvtd_round_corner_top_right" />
+        <attr name="jvtd_round_corner_bottom_left" />
+        <attr name="jvtd_round_corner_bottom_right" />
+        <attr name="jvtd_stroke_color" />
+        <attr name="jvtd_stroke_width" />
+        <attr name="jvtd_clip_background" />
+    </declare-styleable>
+    <declare-styleable name="JvtdRcLinearLayout">
+        <attr name="jvtd_round_as_circle" />
+        <attr name="jvtd_round_corner" />
+        <attr name="jvtd_round_corner_top_left" />
+        <attr name="jvtd_round_corner_top_right" />
+        <attr name="jvtd_round_corner_bottom_left" />
+        <attr name="jvtd_round_corner_bottom_right" />
+        <attr name="jvtd_stroke_color" />
+        <attr name="jvtd_stroke_width" />
+        <attr name="jvtd_clip_background" />
+    </declare-styleable>
+
+    <!--假体：用于提示-->
+    <declare-styleable name="JvtdRcImageView">
+        <attr name="jvtd_round_as_circle" />
+        <attr name="jvtd_round_corner" />
+        <attr name="jvtd_round_corner_top_left" />
+        <attr name="jvtd_round_corner_top_right" />
+        <attr name="jvtd_round_corner_bottom_left" />
+        <attr name="jvtd_round_corner_bottom_right" />
+        <attr name="jvtd_stroke_color" />
+        <attr name="jvtd_stroke_width" />
+        <attr name="jvtd_clip_background" />
+    </declare-styleable>
+</resources>

@@ -1,4 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--app 基础色-->
+    <!--主题色-->
+    <color name="primary_color">#fff</color>
+    <!--状态栏颜色-->
+    <color name="primary_color_dark">#fff</color>
+    <!-- 各控制元件(如：check box、switch 或是 radoi) 被勾选 (checked) 或是选定 (selected) 的颜色。 -->
+    <color name="primary_color_accent">#2196F3</color>
+
+    <!--加载更多颜色-->
+    <color name="jvtd_load_more_color">#999</color>
+
+    <!--空布局颜色-->
+    <color name="jvtd_empty_color">#999</color>
+    <color name="jvtd_empty_tips_color">#666</color>
+    <color name="jvtd_empty_btn_bg_color">@color/primary_color_accent</color>
+    <color name="jvtd_empty_btn_text_color">#000</color>
+
+    <!--下拉刷新背景色-->
+    <color name="jvtd_refresh_layout_bg_color">#fff</color>
+
+    <!--alertdialog颜色-->
+    <color name="jvtd_alert_dialog_title_color">#000</color>
+    <color name="jvtd_alert_dialog_msg_color">#666</color>
+    <color name="jvtd_alert_dialog_btn_text_color">#000</color>
+    <color name="jvtd_alert_dialog_line_color">#e8e8e8</color>
+    <color name="jvtd_alert_dialog_hint_color">#999</color>
+
+    <!--toast颜色-->
+    <color name="jvtd_toast_bg_color">#aa000000</color>
+    <color name="jvtd_toast_text_color">#fff</color>
+
+    <!--pickerview颜色-->
+    <color name="jvtd_picker_view_btn_color">#000</color>
+    <color name="jvtd_picker_view_title_color">#000</color>
+    <color name="jvtd_picker_view_title_bg_color">#fff</color>
+    <color name="jvtd_picker_view_info_bg_color">#fff</color>
+    <color name="jvtd_picker_view_current_text_color">#000</color>
+    <color name="jvtd_picker_view_other_text_color">#666</color>
+
+    <!--recyclerview颜色-->
+    <color name="jvtd_recycler_view_line_color">#e8e8e8</color>
+
+    <!--toolbar颜色-->
+    <color name="jvtd_tool_bar_menu_text_color">#000</color>
+    <color name="jvtd_tool_bar_bg_color">#fff</color>
+    <color name="jvtd_tool_bar_text_color">#000</color>
+
+    <!--loadingdialog颜色-->
+    <color name="jvtd_loading_dialog_spin_kit_color">#e8e8e8</color>
+
+    <!--webview颜色-->
+    <color name="jvtd_web_view_host_text_color">#000</color>
+    <color name="jvtd_web_view_bg_color">#fff</color>
+    <color name="jvtd_web_view_progress_color">@color/primary_color_accent</color>
+
+    <!--状态栏-导航栏颜色-->
+    <color name="jvtd_navigation_bar_color">#000</color>
+    <color name="jvtd_status_bar_color">#000</color>
+    <color name="jvtd_status_bar_dark_font_color">#fff</color>
+
+    <!--颜色配置-->
     <color name="color_000">#000</color>
+
 </resources>

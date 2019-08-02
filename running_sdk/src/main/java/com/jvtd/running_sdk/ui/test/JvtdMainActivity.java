@@ -1,4 +1,4 @@
-package com.jvtd.running_sdk.ui;
+package com.jvtd.running_sdk.ui.test;
 
 import android.content.IntentFilter;
 import android.location.Location;
@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import com.amap.api.maps.AMap;
 import com.jvtd.running_sdk.R;
+import com.jvtd.running_sdk.base.JvtdMvpActivity;
+import com.jvtd.running_sdk.base.JvtdMvpPresenter;
 import com.jvtd.running_sdk.bean.JvtdLineBean;
 import com.jvtd.running_sdk.constants.RunningSdk;
 import com.jvtd.running_sdk.eventBus.EventCenter;
@@ -30,30 +32,46 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.io.IOException;
 import java.net.Socket;
 
-public class JvtdMainActivity extends AppCompatActivity implements AMap.OnMyLocationChangeListener {
+public class JvtdMainActivity extends JvtdMvpActivity implements JvtdMainMvpView, AMap.OnMyLocationChangeListener {
     private static final String TAG = "测试地图页面";
+
+    private JvtdMainPresenter<JvtdMainMvpView> mPresenter;
 
     private TextView mTextView;
     private JvtdLocationChangeReceiver receiver;
     private JvtdMapView mMapView;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.jvtd_activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        EventBus.getDefault().register(this);
-        mTextView = findViewById(R.id.info_view);
-
-        mMapView = findViewById(R.id.jvtd_map_view);
         mMapView.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void bindView() {
+        toolbar = findViewById(R.id.tool_bar);
+        mTextView = findViewById(R.id.info_view);
+        mMapView = findViewById(R.id.jvtd_map_view);
+    }
+
+    @Override
+    protected void getLayout() {
+        setContentView(R.layout.jvtd_activity_main);
+    }
+
+    @Override
+    protected void initViewAndData() {
+        mPresenter = new JvtdMainPresenter<>(this,this);
+        mPresenter.test();
+        TextView textView = toolbar.findViewById(R.id.tool_bar_title);
+        textView.setText(R.string.app_name);
+        setToolbar(toolbar,true);
         mMapView.setOnMyLocationChangeListener(this);
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(RunningSdk.LOCATION_IN_BACKGROUND);
         receiver = new JvtdLocationChangeReceiver();
         registerReceiver(receiver, intentFilter);
-
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> {
             JvtdLocationStatusManager.getInstance().resetToInit(getApplicationContext());
@@ -84,7 +102,6 @@ public class JvtdMainActivity extends AppCompatActivity implements AMap.OnMyLoca
      *
      * @param eventCenter 事件实体类
      */
-    @Subscribe(threadMode = ThreadMode.MAIN)
     public void activityOnEvent(EventCenter eventCenter)
     {
         String infoViewString = getString(R.string.app_name);
@@ -106,16 +123,21 @@ public class JvtdMainActivity extends AppCompatActivity implements AMap.OnMyLoca
     @Override
     protected void onDestroy()
     {
-        EventBus.getDefault().unregister(this);
         JvtdLineBean.getInstance().reset();
         JvtdLocationStatusManager.getInstance().stopLocationService(getApplicationContext());
         unregisterReceiver(receiver);
         mMapView.onDestroy();
+        mPresenter.onDetach();
         super.onDestroy();
     }
 
     @Override
     public void onMyLocationChange(Location location) {
         Log.d(TAG,location.toString());
+    }
+
+    @Override
+    public void test(String str) {
+        showMessage(str);
     }
 }

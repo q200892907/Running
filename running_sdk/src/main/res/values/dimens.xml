@@ -1,10 +1,48 @@
 <resources>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="jvtd_dp_16">16dp</dimen>
-    <dimen name="jvtd_dp_24">24dp</dimen>
-    <dimen name="jvtd_sp_8">8sp</dimen>
+    <!--加载更多属性配置 可复写自定义-->
+    <dimen name="jvtd_load_more_text_size">14sp</dimen>
+    <dimen name="jvtd_load_more_height">40dp</dimen>
+
+    <!--空布局属性配置-->
+    <dimen name="jvtd_empty_text_size">14sp</dimen>
+    <dimen name="jvtd_empty_tips_text_size">18sp</dimen>
+    <dimen name="jvtd_empty_btn_radius">4dp</dimen>
+    <dimen name="jvtd_empty_btn_height">40dp</dimen>
+    <dimen name="jvtd_alert_dialog_title_text_size">16sp</dimen>
+    <dimen name="jvtd_alert_dialog_msg_text_size">14sp</dimen>
+    <dimen name="jvtd_alert_dialog_btn_text_size">16sp</dimen>
+    <dimen name="jvtd_alert_dialog_line_size">0.5dp</dimen>
+
+    <!--toast属性配置-->
+    <dimen name="jvtd_toast_line_size">1dp</dimen>
+    <dimen name="jvtd_toast_padding_size">4dp</dimen>
+    <dimen name="jvtd_toast_radius">10dp</dimen>
+    <dimen name="jvtd_toast_text_size">14sp</dimen>
+
+    <!--recyclerview属性配置-->
+    <dimen name="jvtd_recycler_view_line_size">0.5dp</dimen>
+
+    <!--toolbar属性配置-->
+    <dimen name="jvtd_tool_bar_menu_text_size">14sp</dimen>
+    <dimen name="jvtd_tool_bar_height">44dp</dimen>
+    <dimen name="jvtd_tool_bar_text_size">18sp</dimen>
+    <dimen name="jvtd_tool_bar_text_width">180dp</dimen>
+
+    <!--loadingdialog属性配置-->
+    <dimen name="jvtd_loading_dialog_margin">10dp</dimen>
+
+    <!--webview属性配置-->
+    <dimen name="jvtd_web_view_host_text_size">12sp</dimen>
+    <dimen name="jvtd_bar_text_size">10sp</dimen>
+
+    <!--dp配置-->
+    <dimen name="jvtd_dp_0">0dp</dimen>
     <dimen name="jvtd_dp_1">1dp</dimen>
     <dimen name="jvtd_dp_4">4dp</dimen>
-    <dimen name="jvtd_dp_0">0dp</dimen>
+    <dimen name="jvtd_dp_16">16dp</dimen>
     <dimen name="jvtd_dp_18">18dp</dimen>
+    <dimen name="jvtd_dp_24">24dp</dimen>
+
+    <!--sp配置-->
+    <dimen name="jvtd_sp_8">8sp</dimen>
 </resources>

@@ -16,7 +16,6 @@ import com.amap.api.location.AMapLocationListener;
 import com.jvtd.running_sdk.R;
 import com.jvtd.running_sdk.stepCount.StepCount;
 import com.jvtd.running_sdk.stepCount.StepDetector;
-import com.jvtd.running_sdk.stepCount.StepValuePassListener;
 import com.jvtd.running_sdk.utils.JvtdLocationUtils;
 
 import java.util.concurrent.TimeUnit;
@@ -223,7 +222,7 @@ public class JvtdLocation implements AMapLocationListener
     }
     builder.setSmallIcon(R.drawable.ic_launcher)
         .setContentTitle(mContext.getString(R.string.app_name))
-        .setContentText(mContext.getString(R.string.use_location_service))
+        .setContentText(mContext.getString(R.string.jvtd_use_location_service))
         .setWhen(System.currentTimeMillis());
     notification = builder.build();
     return notification;

@@ -5,6 +5,25 @@ def rxjava2_version = '2.1.1'
 def rxbinding_version = '2.1.1'
 def multidex_version = '1.0.3'
 def eventbus_version = '3.1.1'
+def adapter_version = '2.9.40'
+def refresh_layout_version = '1.0.3'
+def jsbridge_version = '1.0.4'
+def spinkit_version = '1.1.0'
+def picker_view_version = '4.1.8'
+def retrofit2_version = '2.2.0'
+def okhttp_version = '3.7.0'
+def fragment_version = '1.3.4'
+def glide_version = '4.7.1'
+def luban_version = '1.1.8'
+def statusbar_version = '2.3.2-beta02'
+def logcook_version = 'v1.0'
+def permission_version = '1.2.0'
+def magicindicator_version = '1.5.0'
+def supertextview_version = '2.1.8'
+def banner_version = '1.4.10'
+def imagepicker_version = '2.0.6'
+def easypopup_version = '1.1.2'
+
 
 project.ext {
 
@@ -44,6 +63,64 @@ project.ext {
 
             // EventBus
             "eventbus"                 : "org.greenrobot:eventbus:${eventbus_version}",
+
+            // Adapter
+            "brvah"                    : "com.github.CymChad:BaseRecyclerViewAdapterHelper:${adapter_version}",
+
+            //下拉刷新
+            "smartrefreshlayout"       : "com.scwang.smartrefresh:SmartRefreshLayout:${refresh_layout_version}",
+            //没有使用特殊Header，可以不加这行
+            "smartrefreshheader"       : "com.scwang.smartrefresh:SmartRefreshHeader:${refresh_layout_version}",
+
+            // web js 交互
+            "jsbridge"                 : "com.github.lzyzsd:jsbridge:${jsbridge_version}",
+
+            //loading动画
+            "spinkit"                  : "com.github.ybq:Android-SpinKit:${spinkit_version}",
+
+            //条件选择器
+            "pickerview"               : "com.contrarywind:Android-PickerView:${picker_view_version}",
+
+            /*retrofit*/
+            "retrofit"                 : "com.squareup.retrofit2:retrofit:${retrofit2_version}",
+            "converter-gson"           : "com.squareup.retrofit2:converter-gson:${retrofit2_version}",
+            "converter-scalars"        : "com.squareup.retrofit2:converter-scalars:${retrofit2_version}",
+            "adapter-rxjava2"          : "com.squareup.retrofit2:adapter-rxjava2:${retrofit2_version}",
+            "logging-interceptor"      : "com.squareup.okhttp3:logging-interceptor:${okhttp_version}",
+
+            //fragment
+            "fragmentation"            : "me.yokeyword:fragmentation:${fragment_version}",
+
+            //Glide
+            "glide"                    : "com.github.bumptech.glide:glide:${glide_version}",
+            "glide-compiler"           : "com.github.bumptech.glide:compiler:${glide_version}",
+
+            //图片压缩
+            "luban"                    : "top.zibin:Luban:${luban_version}",
+
+            // 浸入式状态栏
+            "statusbar"                : "com.gyf.immersionbar:immersionbar:${statusbar_version}",
+
+            //崩溃日志
+            "logcook"                  : "com.github.whieenz:LogCook:${logcook_version}",
+
+            //权限
+            "permission"               : "pub.devrel:easypermissions:${permission_version}",
+
+            //MagicIndicator
+            "magicindicator"           : "com.github.hackware1993:MagicIndicator:${magicindicator_version}",
+
+            //supertextview
+            "supertextview"            : "com.github.lygttpod:SuperTextView:${supertextview_version}",
+
+            //banner
+            "banner"                   : "com.youth.banner:banner:${banner_version}",
+
+            //imagepicker
+            "imagepicker"              : "com.yuyh.imgsel:library:${imagepicker_version}",
+
+            //easypopup
+            "easypopup"                : "com.github.zyyoona7:EasyPopup:${easypopup_version}",
     ]
 }
 

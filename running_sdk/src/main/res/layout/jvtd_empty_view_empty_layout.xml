@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/jvtd_empty_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_empty"
+        tools:ignore="ContentDescription" />
+    <TextView
+        android:id="@+id/jvtd_empty_msg"
+        android:textColor="@color/jvtd_empty_color"
+        android:textSize="@dimen/jvtd_empty_text_size"
+        android:gravity="center"
+        android:text="@string/jvtd_empty_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/jvtd_empty_tips"
+        android:visibility="gone"
+        android:textColor="@color/jvtd_empty_tips_color"
+        android:textSize="@dimen/jvtd_empty_tips_text_size"
+        tools:text="@string/app_name"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/jvtd_empty_founction_btn"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/jvtd_empty_btn_height"
+        android:layout_marginTop="8dp"
+        android:textSize="@dimen/jvtd_empty_text_size"
+        android:textColor="@color/jvtd_empty_btn_text_color"
+        android:gravity="center"
+        tools:text="@string/app_name"
+        android:background="@drawable/jvtd_empty_btn_shape"/>
+</LinearLayout>
